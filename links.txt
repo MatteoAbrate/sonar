@@ -1,0 +1,6 @@
+Links:
+
+https://github.com/josh-macfie/sonarSense/blob/master/README.md
+
+http://win.adrirobot.it/sonar/HC-SR04/Sensore_sonar_HC-SR04.htm
+
