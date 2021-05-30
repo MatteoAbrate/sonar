@@ -1,0 +1,8 @@
+0.6
+2019.2
+Nov  6 2019
+21:57:16
+C:/Users/matte/Desktop/FPGA/Sonar/bench/ClockGen.v,1621858762,systemVerilog,,,,ClockGen,,,C:/Users/matte/Desktop/FPGA/Sonar/work/sim/../../rtl,SIM,,,,
+C:/Users/matte/Desktop/FPGA/Sonar/bench/glbl.v,1621858762,systemVerilog,,,,glbl,,,C:/Users/matte/Desktop/FPGA/Sonar/work/sim/../../rtl,SIM,,,,
+C:/Users/matte/Desktop/FPGA/Sonar/bench/tb_sonar.v,1622384784,systemVerilog,,,,,,,C:/Users/matte/Desktop/FPGA/Sonar/work/sim/../../rtl,SIM,,,,
+C:/Users/matte/Desktop/FPGA/Sonar/rtl/sonar.v,1622386330,systemVerilog,,,,sonar;trigger,,,C:/Users/matte/Desktop/FPGA/Sonar/work/sim/../../rtl,SIM,,,,

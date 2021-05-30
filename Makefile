@@ -11,7 +11,7 @@
 ## Examples:
 ##
 ##   % make compile [hdl=rtl/verilog.v]
-##   % make build install [board=Arty|ArtyA7]
+##   % make build install
 ##
 ## Luca Pacher - pacher@to.infn.it
 ## Fall 2020
@@ -92,8 +92,9 @@ SIM_TOP_MODULE := tb_sonar
 ## specify RTL sources by hand (more in general can be Verilog + VHDL code)
 ##
 
-RTL_VLOG_SOURCES := $(RTL_DIR)/sonar.v 
+RTL_VLOG_SOURCES := $(RTL_DIR)/sonar.v
 SIM_VLOG_SOURCES := $(SIM_DIR)/glbl.v $(SIM_DIR)/ClockGen.v $(SIM_DIR)/tb_sonar.v
+
 
 ## if no VHDL sources, you can either comment the below variables or just leave them empty
 RTL_VHDL_SOURCES :=
@@ -136,15 +137,6 @@ VLOG_SOURCES := $(RTL_VLOG_SOURCES) $(SIM_VLOG_SOURCES)
 VHDL_SOURCES := $(RTL_VHDL_SOURCES) $(SIM_VHDL_SOURCES)
 
 
-############################
-##   gate-level netlist   ##
-############################
-
-ifneq ($(wildcard $(WORK_DIR)/build/outputs/signoff.v ),)
-   VLOG_NETLIST := $(WORK_DIR)/build/outputs/signoff.v
-endif
-
-
 ##########################
 ##   IP sources setup   ##
 ##########################
@@ -160,8 +152,8 @@ endif
 ## as for HDL sources, specify IP netlists by hand or automatically search for all *netlist.v sources
 # IPS_SOURCES := $(IPS_DIR)/PLL/PLL_sim_netlist.v
 
-ifneq ($(wildcard $(IPS_DIR)/*/*sim_netlist.v ),)
-   IPS_SOURCES += $(wildcard $(IPS_DIR)/*/*sim_netlist.v )
+ifneq ($(wildcard $(IPS_DIR)/*/*netlist.v ),)
+   IPS_SOURCES += $(wildcard $(IPS_DIR)/*/*netlist.v )
 endif
 
 
@@ -169,22 +161,12 @@ endif
 ##   target FPGA device and external memory   ##
 ################################################
 
-board := Spartan7
-#board := ArtyA7
-
-## default: Artix7 on Digilent Aty/Arty A7 development boards
+## default: Artix7 on Digilent Arty A7 development board
 part  := xc7s15ftgb196-1
 
-## default: 128 MB Quad SPI Flash on Digilent Arty/Arty A7 development boards (but different chip IDs between Arty And Arty A7)
-ifeq ($(board),Spartan7)
-   flash := mt25ql128-spi-x1_x2_x4
-else
-##ifeq ($(board),ArtyA7)
-  ## flash := s25fl128sxxxxxx0-spi-x1-_x2_x4
-else
-   $(error ERROR: Unknown board name $(board))
-endif
-endif
+## default: 128 MB Quad SPI Flash on Digilent Arty A7 development board
+flash := mt25ql128-spi-x1_x2_x4
+#flash := n25q128-3.3v-spi-x1_x2_x4 ; ## WARN: **should be the same as "mt25ql128-spi-x1_x2_x4" (alias), but this string gives programming errors
 
 
 #########################
@@ -213,9 +195,9 @@ MKDIR := mkdir -p -v
 ##
 
 ## by default, run Vivado/XSim flows in GUI mode
-mode ?= gui
+#mode ?= gui
 #mode ?= tcl
-#mode ?= batch
+mode ?= batch
 
 
 ##############################################
@@ -306,7 +288,7 @@ help : ## Command line help
 	@$(ECHO) ""
 	@$(ECHO) "   % make compile [hdl=/path/to/verilog.v|hdl=/path/to/vhdl.vhd]"
 	@$(ECHO) "   % make sim"
-	@$(ECHO) "   % make build install [board=Arty|ArtyA7]"
+	@$(ECHO) "   % make build install"
 	@$(ECHO) ""
 ##____________________________________________________________________________________________________
 

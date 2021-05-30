@@ -1,0 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/matte/Desktop/FPGA/Sonar/rtl/sonar.v" into library work
+INFO: [VRFC 10-311] analyzing module sonar
+INFO: [VRFC 10-311] analyzing module trigger
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/matte/Desktop/FPGA/Sonar/bench/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/matte/Desktop/FPGA/Sonar/bench/ClockGen.v" into library work
+INFO: [VRFC 10-311] analyzing module ClockGen
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/matte/Desktop/FPGA/Sonar/bench/tb_sonar.v" into library work
